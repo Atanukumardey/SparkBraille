@@ -1671,6 +1671,27 @@ header .row {
  *  10. home - (_layout.scss)
  *
  * ------------------------------------------------------------------- */
+
+
+.carousel {
+  width: 50%;
+  /* Adjust width as needed */
+  height: auto;
+  /* Adjust height as needed */
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  /* Adjust transition properties */
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  /* Ensures slides fill the width */
+}
+
 #home,
 #final {
   width: 100%;
@@ -1688,6 +1709,10 @@ header .row {
 
 #home {
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #final {
@@ -2841,12 +2866,32 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 
 
 /* ===================================================================
+ *  16. sdg - (_layout.scss)
+ *
+ * ------------------------------------------------------------------- */
+#sdg {
+  padding: 20px;
+}
+
+#sdg-goals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+#sdg-goals img {
+  max-width: 200px;
+}
+
+
+/* ===================================================================
  *  16. contact - (_layout.scss)
  *
  * ------------------------------------------------------------------- */
 #contact {
   background-color: white;
-  background-image: url(../resources/r2.png);
+  background-image: url(../resources/r1.png);
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
@@ -3232,6 +3277,29 @@ select {
     margin-right: 0;
     padding: 0;
   }
+}
+
+
+/* ===================================================================
+ *  17. Slogan
+ *
+ * ------------------------------------------------------------------- */
+#slogan {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#slogan>h1 {
+  font: 80px;
+}
+
+#slogan>p {
+  font-size: 70px;
+  color: rgb(194, 65, 65);
 }
 
 
