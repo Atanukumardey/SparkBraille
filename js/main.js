@@ -299,7 +299,7 @@
 					$('#contactForm_i').show();
 					$('#contactForm_s').hide();
 					break;
-				case "schoolsandorganisations":
+				case "schoolsandorganizations":
 					$('#contactForm_i').hide();
 					$('#contactForm_s').show();
 					break;
@@ -307,44 +307,44 @@
 		});
 
 		/* local validation for i */
-		$('#contactForm_i').validate({
+		// $('#contactForm_i').validate({
 
-			/* submit via ajax */
-			submitHandler: function (form) {
-				var sLoader = $('#submit-loader_i');
+		// 	/* submit via ajax */
+		// 	submitHandler: function (form) {
+		// 		var sLoader = $('#submit-loader_i');
 
-				$.ajax({
-					type: "POST",
-					url: cfg.sendURL,
-					data: $(form).serialize(),
+		// 		$.ajax({
+		// 			type: "POST",
+		// 			url: cfg.sendURL,
+		// 			data: $(form).serialize(),
 
-					beforeSend: function () {
-						sLoader.fadeIn();
-					},
-					success: function (msg) {
-						// Message was sent
-						if (msg == 'OK') {
-							sLoader.fadeOut();
-							$('#message-warning_i').hide();
-							$('#contactForm_i').fadeOut();
-							$('#message-success_i').fadeIn();
-						}
-						// There was an error
-						else {
-							sLoader.fadeOut();
-							$('#message-warning_i').html(msg);
-							$('#message-warning_i').fadeIn();
-						}
-					},
-					error: function () {
-						sLoader.fadeOut();
-						$('#message-warning_i').html("Something went wrong. Please try again.");
-						$('#message-warning_i').fadeIn();
-					}
-				});
-			}
+		// 			beforeSend: function () {
+		// 				sLoader.fadeIn();
+		// 			},
+		// 			success: function (msg) {
+		// 				// Message was sent
+		// 				if (msg == 'OK') {
+		// 					sLoader.fadeOut();
+		// 					$('#message-warning_i').hide();
+		// 					$('#contactForm_i').fadeOut();
+		// 					$('#message-success_i').fadeIn();
+		// 				}
+		// 				// There was an error
+		// 				else {
+		// 					sLoader.fadeOut();
+		// 					$('#message-warning_i').html(msg);
+		// 					$('#message-warning_i').fadeIn();
+		// 				}
+		// 			},
+		// 			error: function () {
+		// 				sLoader.fadeOut();
+		// 				$('#message-warning_i').html("Something went wrong. Please try again.");
+		// 				$('#message-warning_i').fadeIn();
+		// 			}
+		// 		});
+		// 	}
 
-		});
+		// });
 
 		/* local validation for s */
 		$('#contactForm_s').validate({
@@ -449,22 +449,39 @@
 	})();
 
 
-	var $form = $('form#contactForm_i'),
-		url = 'https://script.google.com/macros/s/AKfycbxAThf88X5jLUxazQlnFlv2OuFPGLf4stj8z_JsUB9M1tj_eFML/exec'
+	const form = document.querySelector('#contactForm_i')
+	const scriptURL = 'https://script.google.com/macros/s/AKfycbwMqS_douisBvMyvpF-AtFPVLR-efgXDGBrZ7Zxnyb7UPJXXZaej5XF8eJMOM-I-XQ/exec'
 
-	$('#submit-form').on('click', function (e) {
+	form.addEventListener('submit', e => {
 		e.preventDefault();
-		var jqxhr = $.ajax({
-			url: url,
-			method: "GET",
-			dataType: "json",
-			data: $form.serialize()
-		}).success(function () {
-			console.log("Success!");
-			$('#message-success_i').html("Thanks for signing up! We will be in touch soon. :)");
-			$('#message-success_i').fadeIn();
-		});
+		let data_to_print = new FormData(form)
+		console.log(data_to_print.values());
+		fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+			.then(response => {
+				// btn.disabled = false
+				// btn.innerHTML = "Submit"
+				$('#message-success_i').html("Thanks for signing up! We will be in touch soon. :)");
+				$('#message-success_i').fadeIn();
+				alert('Success!', response)
+			})
+			.catch(error => {
+				// btn.disabled = false
+				// btn.innerHTML = "Submit"
+				alert('Error!', error.message)
+			})
 	})
+	// $('#submit-form').on('click', function (e) {
+	// 	// var jqxhr = $.ajax({
+	// 	// 	url: url,
+	// 	// 	method: "POST",
+	// 	// 	dataType: "json",
+	// 	// 	data: $form.serialize()
+	// 	// }).success(function () {
+	// 	// 	console.log("Success!");
+	// 	// 	$('#message-success_i').html("Thanks for signing up! We will be in touch soon. :)");
+	// 	// 	$('#message-success_i').fadeIn();
+	// 	// });
+	// })
 
 	var $form1 = $('form#contactForm_s'),
 		url = 'https://script.google.com/macros/s/AKfycbxAThf88X5jLUxazQlnFlv2OuFPGLf4stj8z_JsUB9M1tj_eFML/exec'
