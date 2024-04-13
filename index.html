@@ -24,6 +24,7 @@
 		content="Spark is the world’s most-affordable Braille learning device for the visually impaired.">
 	<meta property="og:image" content="images/spark.png">
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="author" content="Spark">
 
@@ -629,8 +630,8 @@
 						<div class="row">
 							<div class="col-six tab-full">
 								<div class="form-field">
-									<input name="FirstName" type="text" id="contactName_i_FN"
-										placeholder="First Name" value="" required />
+									<input name="FirstName" type="text" id="contactName_i_FN" placeholder="First Name"
+										value="" required />
 								</div>
 							</div>
 							<div class="col-six tab-full">
@@ -644,8 +645,8 @@
 						<div class="row">
 							<div class="col-six tab-full">
 								<div class="form-field">
-									<input name="Email" type="email" id="contactEmail_i" placeholder="Email"
-										value="" required />
+									<input name="Email" type="email" id="contactEmail_i" placeholder="Email" value=""
+										required />
 								</div>
 							</div>
 							<div class="col-six tab-full">
@@ -656,17 +657,6 @@
 							</div>
 						</div>
 
-						<!-- <div class="row">
-							<div class="form-field col-twelve tab-full">
-								<select name="contactBuyFor" id="contactBuyFor_i" required>
-									<option value="" disabled selected>Choose Color</option>
-									<option value="black">Black</option>
-									<option value="white">White</option>
-									<option value="gray">Gray</option>
-									<option value="blue">Blue</option>
-								</select>
-							</div>
-						</div> -->
 						<div class="row">
 							<div class="form-field col-twelve tab-full">
 								<button class="submitform" type="submit" id="submit-form">Pre-order</button>
@@ -710,20 +700,20 @@
 						<input name="contactFrom" type="hidden" value="Schools and Organisations" />
 
 						<div class="form-field">
-							<input name="contactName" type="text" id="contactName_s"
+							<input name="Organization" type="text" id="contactName_s"
 								placeholder="Name of organisation/institution" value="" minlength="2" required />
 						</div>
 
 						<div class="row">
 							<div class="col-six tab-full">
 								<div class="form-field">
-									<input name="contactFirstName" type="text" id="contactName_s"
-										placeholder="First Name" value="" required />
+									<input name="FirstName" type="text" id="contactName_s" placeholder="First Name"
+										value="" required />
 								</div>
 							</div>
 							<div class="col-six tab-full">
 								<div class="form-field">
-									<input name="contactLastName" type="text" id="contactName_s" placeholder="Last Name"
+									<input name="LastName" type="text" id="contactName_s" placeholder="Last Name"
 										value="" required />
 								</div>
 							</div>
@@ -732,31 +722,31 @@
 						<div class="row">
 							<div class="col-six tab-full">
 								<div class="form-field">
-									<input name="contactLocation" type="text" id="contactLocation_s"
+									<input name="Location" type="text" id="contactLocation_s"
 										placeholder="Location (city/country)" value="" required />
 								</div>
 							</div>
 							<div class="col-six tab-full">
 								<div class="form-field">
-									<input name="contactEmail" type="text" id="contactEmail_s" placeholder="Email"
-										value="" required />
+									<input name="Email" type="text" id="contactEmail_s" placeholder="Email" value=""
+										required />
 								</div>
 							</div>
 						</div>
 
 						<div class="form-field">
-							<input name="contactNoA" type="number" id="contactNoA_s"
-								placeholder="Estimated number of Sparks (Grade 1 to 5 children)" required />
+							<input name="NOADevices" type="number" id="contactNoA_s"
+								placeholder="Estimated number of Devices (Grade 1 to 5 children)" required />
 						</div>
 
 						<div class="checker form-field">
-							<input name="contactCheck" type="checkbox" id="contactCheck_s" />
+							<input name="ContactCheck" type="checkbox" id="contactCheck_s" />
 							<label for="contactCheck_s">We would benefit from an external partner sponsoring the
 								devices</label>
 						</div>
 
 						<div class="form-field">
-							<button class="submitform" id="submit-form-s">Organisation Sign up</button>
+							<button class="submitform" id="submit-form-s" type="submit">Organisation Sign up</button>
 
 							<div id="submit-loader_s" class="submit-loader">
 								<div class="text-loader">Sending...</div>

@@ -5,7 +5,7 @@
 	var cfg = {
 		defAnimation: "fadeInUp",    // default css animation
 		scrollDuration: 800,           // smoothscroll duration
-		sendURL: "inc/send.php"					// email to send contact form data to.
+		sendURL: "https://script.google.com/macros/s/AKfycby_3nmQKQ0ELygkultZREWn7DaLPO4EVtV3F7XLfUKOoy5OyUVY7rHmW2-LJHvk6xeX/exec"					// email to send contact form data to.
 	},
 
 		$WIN = $(window);
@@ -306,84 +306,6 @@
 			}
 		});
 
-		/* local validation for i */
-		// $('#contactForm_i').validate({
-
-		// 	/* submit via ajax */
-		// 	submitHandler: function (form) {
-		// 		var sLoader = $('#submit-loader_i');
-
-		// 		$.ajax({
-		// 			type: "POST",
-		// 			url: cfg.sendURL,
-		// 			data: $(form).serialize(),
-
-		// 			beforeSend: function () {
-		// 				sLoader.fadeIn();
-		// 			},
-		// 			success: function (msg) {
-		// 				// Message was sent
-		// 				if (msg == 'OK') {
-		// 					sLoader.fadeOut();
-		// 					$('#message-warning_i').hide();
-		// 					$('#contactForm_i').fadeOut();
-		// 					$('#message-success_i').fadeIn();
-		// 				}
-		// 				// There was an error
-		// 				else {
-		// 					sLoader.fadeOut();
-		// 					$('#message-warning_i').html(msg);
-		// 					$('#message-warning_i').fadeIn();
-		// 				}
-		// 			},
-		// 			error: function () {
-		// 				sLoader.fadeOut();
-		// 				$('#message-warning_i').html("Something went wrong. Please try again.");
-		// 				$('#message-warning_i').fadeIn();
-		// 			}
-		// 		});
-		// 	}
-
-		// });
-
-		/* local validation for s */
-		$('#contactForm_s').validate({
-
-			/* submit via ajax */
-			submitHandler: function (form) {
-				var sLoader = $('#submit-loader_s');
-
-				$.ajax({
-					type: "POST",
-					url: cfg.sendURL,
-					data: $(form).serialize(),
-
-					beforeSend: function () {
-						sLoader.fadeIn();
-					},
-					success: function (msg) {
-						// Message was sent
-						if (msg == 'OK') {
-							sLoader.fadeOut();
-							$('#message-warning_s').hide();
-							$('#contactForm_s').fadeOut();
-							$('#message-success_s').fadeIn();
-						}
-						// There was an error
-						else {
-							sLoader.fadeOut();
-							$('#message-warning_s').html(msg);
-							$('#message-warning_s').fadeIn();
-						}
-					},
-					error: function () {
-						sLoader.fadeOut();
-						$('#message-warning_s').html("Something went wrong. Please try again.");
-						$('#message-warning_s').fadeIn();
-					}
-				});
-			}
-		});
 	};
 
 
@@ -448,56 +370,34 @@
 
 	})();
 
+})(jQuery);
 
-	const form = document.querySelector('#contactForm_i')
-	const scriptURL = 'https://script.google.com/macros/s/AKfycbwMqS_douisBvMyvpF-AtFPVLR-efgXDGBrZ7Zxnyb7UPJXXZaej5XF8eJMOM-I-XQ/exec'
+const form = document.querySelector('#contactForm_i')
+const form1 = document.querySelector('#contactForm_s')
+const scriptURL = 'https://script.google.com/macros/s/AKfycby_3nmQKQ0ELygkultZREWn7DaLPO4EVtV3F7XLfUKOoy5OyUVY7rHmW2-LJHvk6xeX/exec'
 
-	form.addEventListener('submit', e => {
-		e.preventDefault();
-		let data_to_print = new FormData(form)
-		console.log(data_to_print.values());
-		fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-			.then(response => {
-				// btn.disabled = false
-				// btn.innerHTML = "Submit"
-				$('#message-success_i').html("Thanks for signing up! We will be in touch soon. :)");
-				$('#message-success_i').fadeIn();
-				alert('Success!', response)
-			})
-			.catch(error => {
-				// btn.disabled = false
-				// btn.innerHTML = "Submit"
-				alert('Error!', error.message)
-			})
-	})
-	// $('#submit-form').on('click', function (e) {
-	// 	// var jqxhr = $.ajax({
-	// 	// 	url: url,
-	// 	// 	method: "POST",
-	// 	// 	dataType: "json",
-	// 	// 	data: $form.serialize()
-	// 	// }).success(function () {
-	// 	// 	console.log("Success!");
-	// 	// 	$('#message-success_i').html("Thanks for signing up! We will be in touch soon. :)");
-	// 	// 	$('#message-success_i').fadeIn();
-	// 	// });
-	// })
-
-	var $form1 = $('form#contactForm_s'),
-		url = 'https://script.google.com/macros/s/AKfycbxAThf88X5jLUxazQlnFlv2OuFPGLf4stj8z_JsUB9M1tj_eFML/exec'
-
-	$('#submit-form-s').on('click', function (e) {
-		e.preventDefault();
-		var jqxhr = $.ajax({
-			url: url,
-			method: "GET",
-			dataType: "json",
-			data: $form1.serialize()
-		}).success(function () {
-			console.log("Success!");
+form.addEventListener('submit', e => {
+	e.preventDefault();
+	fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+		.then(response => {
 			$('#message-success_i').html("Thanks for signing up! We will be in touch soon. :)");
 			$('#message-success_i').fadeIn();
-		});
-	})
+			alert('Success!', response)
+		})
+		.catch(error => {
+			alert('Error!', error.message)
+		})
+})
 
-})(jQuery);
+form1.addEventListener('submit', e => {
+	e.preventDefault();
+	fetch(scriptURL, { method: 'POST', body: new FormData(form1) })
+		.then(response => {
+			$('#message-success_s').html("Thanks for signing up! We will be in touch soon. :)");
+			$('#message-success_s').fadeIn();
+			alert('Success!', response)
+		})
+		.catch(error => {
+			alert('Error!', error.message)
+		})
+})
